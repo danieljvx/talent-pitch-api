@@ -10,11 +10,11 @@ import (
 )
 
 func main() {
-	// config.ConnectDB()
+	config.ConnectDB()
 	app := fiber.New()
 
 	app.Use(cors.New(cors.Config{
-		AllowOrigins:     "*", // Se aceptan desde cualquier origen a efecto de las pruebas
+		AllowOrigins:     "*", // Se aceptan desde cualquier origen a efecto de la prueba
 		AllowMethods:     "GET, POST, PUT, DELETE",
 		AllowCredentials: false,
 		AllowHeaders:     "Origin, Content-Type, Accept",
