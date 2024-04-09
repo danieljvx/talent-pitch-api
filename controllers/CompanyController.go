@@ -152,8 +152,8 @@ func SetUpdateCompanyController(c *fiber.Ctx) error {
 		fmt.Printf("params.UserID: %s\n", params.UserID)
 		company := services.PutCompanyService(companyId, params.Title, params.ImagePath, params.Location, params.Industry, uint(params.UserID))
 		if company != nil {
-			return c.Status(http.StatusCreated).JSON(responses.Response{
-				Status:  http.StatusCreated,
+			return c.Status(http.StatusOK).JSON(responses.Response{
+				Status:  http.StatusOK,
 				Message: "company updated",
 				Data:    company,
 			})

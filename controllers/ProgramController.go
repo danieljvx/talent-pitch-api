@@ -30,6 +30,13 @@ type RequestCreateProgram struct {
 	UserID      int    `json:"user_id" xml:"user_id" form:"user_id"`
 }
 
+type RequestCreateProgramParticipant struct {
+	ProgramID   int `json:"program_id" xml:"program_id" form:"program_id"`
+	ChallengeID int `json:"challenge_id" xml:"challenge_id" form:"challenge_id"`
+	CompanyID   int `json:"company_id" xml:"company_id" form:"company_id"`
+	UserID      int `json:"user_id" xml:"user_id" form:"user_id"`
+}
+
 func GetProgramController(c *fiber.Ctx) error {
 	programIdParam := c.Params("id")
 	fmt.Printf("programIdParam: %s\n", programIdParam)
@@ -161,6 +168,103 @@ func SetUpdateProgramController(c *fiber.Ctx) error {
 		return c.Status(http.StatusBadRequest).JSON(responses.Response{
 			Status:  http.StatusBadRequest,
 			Message: "program not updated",
+			Data:    nil,
+		})
+	} else {
+		return c.Status(http.StatusBadRequest).JSON(responses.Response{
+			Status:  http.StatusBadRequest,
+			Message: "Error id field required",
+			Data:    nil,
+		})
+	}
+}
+
+func SetCreateProgramParticipantController(c *fiber.Ctx) error {
+	params := new(RequestCreateProgramParticipant)
+	err := c.BodyParser(params)
+	if err != nil {
+		return c.Status(http.StatusBadRequest).JSON(responses.Response{
+			Status:  http.StatusBadRequest,
+			Message: err.Error(),
+			Data:    nil,
+		})
+	}
+	fmt.Printf("params.ProgramID: %s\n", params.ProgramID)
+	if params.ProgramID <= 0 {
+		return c.Status(http.StatusBadRequest).JSON(responses.Response{
+			Status:  http.StatusBadRequest,
+			Message: "Error [program_id] field is required",
+			Data:    nil,
+		})
+	}
+	fmt.Printf("params.ChallengeID: %s\n", params.ChallengeID)
+	if params.ChallengeID <= 0 {
+		return c.Status(http.StatusBadRequest).JSON(responses.Response{
+			Status:  http.StatusBadRequest,
+			Message: "Error [challenge_id] field is required",
+			Data:    nil,
+		})
+	}
+	fmt.Printf("params.CompanyID: %s\n", params.CompanyID)
+	if params.CompanyID <= 0 {
+		return c.Status(http.StatusBadRequest).JSON(responses.Response{
+			Status:  http.StatusBadRequest,
+			Message: "Error [company_id] field is required",
+			Data:    nil,
+		})
+	}
+	fmt.Printf("params.UserID: %s\n", params.UserID)
+	if params.UserID <= 0 {
+		return c.Status(http.StatusBadRequest).JSON(responses.Response{
+			Status:  http.StatusBadRequest,
+			Message: "Error [user_id] field is required",
+			Data:    nil,
+		})
+	}
+	programParticipant := services.PostProgramParticipantService(params.ProgramID, params.CompanyID, params.ChallengeID, uint(params.UserID))
+	if programParticipant != nil {
+		return c.Status(http.StatusCreated).JSON(responses.Response{
+			Status:  http.StatusCreated,
+			Message: "program participant created",
+			Data:    programParticipant,
+		})
+	}
+	return c.Status(http.StatusBadRequest).JSON(responses.Response{
+		Status:  http.StatusBadRequest,
+		Message: "program participant not created",
+		Data:    nil,
+	})
+}
+
+func SetUpdateProgramParticipantController(c *fiber.Ctx) error {
+	programParticipantIdParam := c.Params("id")
+	fmt.Printf("programParticipantIdParam: %s\n", programParticipantIdParam)
+	if len(programParticipantIdParam) > 0 {
+		programParticipantId, _ := strconv.Atoi(programParticipantIdParam)
+		params := new(RequestCreateProgramParticipant)
+		err := c.BodyParser(params)
+		if err != nil {
+			return c.Status(http.StatusBadRequest).JSON(responses.Response{
+				Status:  http.StatusBadRequest,
+				Message: err.Error(),
+				Data:    nil,
+			})
+		}
+		fmt.Printf("params.ProgramID: %s\n", params.ProgramID)
+		fmt.Printf("params.ChallengeID: %s\n", params.ChallengeID)
+		fmt.Printf("params.CompanyID: %s\n", params.CompanyID)
+		fmt.Printf("params.UserID: %s\n", params.UserID)
+		program := services.PutProgramParticipantService(programParticipantId, params.ProgramID, params.ChallengeID, params.CompanyID, uint(params.UserID))
+		if program != nil {
+			return c.Status(http.StatusOK).JSON(responses.Response{
+				Status:  http.StatusOK,
+				Message: "program participant updated",
+				Data:    program,
+			})
+		}
+		return c.Status(http.StatusBadRequest).JSON(responses.Response{
+			Status:  http.StatusBadRequest,
+			Message: "program participant not updated",
 			Data:    nil,
 		})
 	} else {

@@ -142,8 +142,8 @@ func SetUpdateChallengeController(c *fiber.Ctx) error {
 		fmt.Printf("params.UserID: %s\n", params.UserID)
 		challenge := services.PutChallengeService(challengeId, params.Title, params.Description, params.Difficulty, uint(params.UserID))
 		if challenge != nil {
-			return c.Status(http.StatusCreated).JSON(responses.Response{
-				Status:  http.StatusCreated,
+			return c.Status(http.StatusOK).JSON(responses.Response{
+				Status:  http.StatusOK,
 				Message: "challenge updated",
 				Data:    challenge,
 			})

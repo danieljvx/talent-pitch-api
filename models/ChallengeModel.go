@@ -30,13 +30,3 @@ func GetChallenge(id int) *ChallengeModel {
 	}
 	return nil
 }
-
-func GetChallenges() *[]ChallengeModel {
-	var challenges []ChallengeModel
-
-	err := config.DB.Find(&challenges, "email is not null").Error
-	if err == nil {
-		return &challenges
-	}
-	return nil
-}
