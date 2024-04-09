@@ -1,9 +1,9 @@
 # talent-pitch-api @danieljvx
 
-### `Deploy talent-pitch-api:` [https://danieljvx-meli-morse.herokuapp.com](https://danieljvx-meli-morse.herokuapp.com)
+### `Deploy talent-pitch-api:` [https://danieljvx-talent-pitch-api.herokuapp.com](https://danieljvx-talent-pitch-api.herokuapp.com)
 | Resource | Type | Path | Body |
 | ------ | ------ | ------ | ------ |
-| Swagger | GET | [https://danieljvx-meli-morse.herokuapp.com/swagger/index.html](https://danieljvx-meli-morse.herokuapp.com/swagger/index.html) | null |
+| Swagger | GET | [https://danieljvx-talent-pitch-api.herokuapp.com/swagger/index.html](https://danieljvx-talent-pitch-api.herokuapp.com/swagger/index.html) | null |
 
 ### `1 - Up conntainer:`
 ```bash
