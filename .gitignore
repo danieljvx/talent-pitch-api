@@ -2,3 +2,8 @@
 .env
 .DS_Store
 mysql/data/*
+test.env
+cover.*
+gin-bin
+test.*
+docs

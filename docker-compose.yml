@@ -1,14 +1,6 @@
-version: "2"
+version: "3.8"
 
 services:
-  api:
-    build:
-      context: .
-      dockerfile: docker/api/Dockerfile
-    ports:
-      - "3000:3000" # http
-    links:
-      - db
   db:
     build:
       context: .
@@ -25,4 +17,21 @@ services:
       - ./mysql/talentpitch.sql:/tmp/talentpitch.sql
       - ./mysql/import.sh:/tmp/import.sh
       - ./mysql:/docker-entrypoint-initdb.d
+    #  - ./mysql/talentpitch.sql:/docker-entrypoint-initdb.d/talentpitch.sql
     user: mysql
+    networks:
+      - talentpitch
+  api:
+    build:
+      context: .
+      dockerfile: docker/api/Dockerfile
+    ports:
+      - "3000:3000" # http
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      - talentpitch
+networks:
+  talentpitch:

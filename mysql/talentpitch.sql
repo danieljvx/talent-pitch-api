@@ -1,3 +1,9 @@
+DROP TABLE IF EXISTS program_participants;
+DROP TABLE IF EXISTS challenges;
+DROP TABLE IF EXISTS companies;
+DROP TABLE IF EXISTS programs;
+DROP TABLE IF EXISTS users;
+
 CREATE TABLE users (
    id INT PRIMARY KEY,
    name VARCHAR(255),
@@ -45,8 +51,43 @@ CREATE TABLE programs (
 CREATE TABLE program_participants (
   id INT PRIMARY KEY,
   program_id INT,
-  entity_type VARCHAR(50), -- Indicar el tipo de entidad: 'user', 'challenge', 'company'
-  entity_id INT, -- ID de la entidad participante
+  challenge_id INT,
+  company_id INT,
+  user_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (program_id) REFERENCES programs(id),
-  FOREIGN KEY (entity_id, entity_type) REFERENCES users(id, 'user') -- Ajustar para otras entidades
+  FOREIGN KEY (challenge_id) REFERENCES challenges(id),
+  FOREIGN KEY (company_id) REFERENCES companies(id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+alter table users
+    modify id int auto_increment;
+
+alter table users
+    auto_increment = 1;
+
+alter table challenges
+    modify id int auto_increment;
+
+alter table challenges
+    auto_increment = 1;
+
+alter table companies
+    modify id int auto_increment;
+
+alter table companies
+    auto_increment = 1;
+
+alter table programs
+    modify id int auto_increment;
+
+alter table programs
+    auto_increment = 1;
+
+alter table program_participants
+    modify id int auto_increment;
+
+alter table program_participants
+    auto_increment = 1;
