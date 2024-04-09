@@ -10,6 +10,7 @@ func UserRoute(router fiber.Router) {
 	base.Get("/:id", controllers.GetUserController)
 	base.Post("/", controllers.SetCreateUserController)
 	base.Put("/:id", controllers.SetUpdateUserController)
+	base.Put("/:id/challenge", controllers.SetUpdateUserController)
 	bases := router.Group("/users")
 	bases.Get("/", controllers.GetUsersController)
 }

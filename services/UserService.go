@@ -95,7 +95,12 @@ func GetUsersService(page int, perPage int, dateStart time.Time, dateEnd time.Ti
 	if paginationUsersService.Page < paginationUsersService.LastPage {
 		paginationUsersService.NextPage = paginationUsersService.Page + 1
 	}
-	errUsers := Query.Offset(offset).Limit(paginationUsersService.PerPage).Order("id desc").Find(&paginationUsersService.Data).Error
+	var users []models.UserModel
+	errUsers := Query.Offset(offset).Limit(paginationUsersService.PerPage).Order("id desc").Find(&users).Error
+	for _, u := range users {
+		u.ProgramParticipants = models.GetUserProgramParticipants(int(u.ID))
+		paginationUsersService.Data = append(paginationUsersService.Data, u)
+	}
 	if errUsers == nil {
 		return &paginationUsersService
 	}

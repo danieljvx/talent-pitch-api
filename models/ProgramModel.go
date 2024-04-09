@@ -31,13 +31,3 @@ func GetProgram(id int) *ProgramModel {
 	}
 	return nil
 }
-
-func GetPrograms() *[]ProgramModel {
-	var programs []ProgramModel
-
-	err := config.DB.Find(&programs, "email is not null").Error
-	if err == nil {
-		return &programs
-	}
-	return nil
-}

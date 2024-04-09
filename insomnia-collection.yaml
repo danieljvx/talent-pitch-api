@@ -1,0 +1,609 @@
+_type: export
+__export_format: 4
+__export_date: 2024-04-09T06:20:45.565Z
+__export_source: insomnia.desktop.app:v8.6.1
+resources:
+  - _id: req_9f82c4f72ab946a994e12e8e7f1216fe
+    parentId: wrk_f9afd394923746c085a62f2c01ed3479
+    modified: 1712618434475
+    created: 1712419415692
+    url: http://localhost:3000
+    name: Base
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618316904
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_f9afd394923746c085a62f2c01ed3479
+    parentId: null
+    modified: 1712419409182
+    created: 1712419409182
+    name: TalentPitch
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_204763f7ac9a48c3940474de3751015b
+    parentId: wrk_f9afd394923746c085a62f2c01ed3479
+    modified: 1712642538239
+    created: 1712635796029
+    url: http://localhost:3000/gpt/migration
+    name: GPT Data Migration
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618316854
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e3cd6d1c782848e1966925c6502297d6
+    parentId: fld_c3e36879cb36450d86b82f744b763989
+    modified: 1712618393787
+    created: 1712607117198
+    url: http://localhost:3000/users?page=0&perPage5
+    name: Get List Users
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328513
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_c3e36879cb36450d86b82f744b763989
+    parentId: wrk_f9afd394923746c085a62f2c01ed3479
+    modified: 1712618316804
+    created: 1712618316804
+    name: User
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1712618316804
+    _type: request_group
+  - _id: req_25729d3a8e4c4164a1fff5583c60e9ce
+    parentId: fld_c3e36879cb36450d86b82f744b763989
+    modified: 1712618357123
+    created: 1712612324013
+    url: http://localhost:3000/user/3
+    name: Update User
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Monica Querrales",
+        	"image": "image.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328463
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b71b10f157e843f88e86bdf2f17232db
+    parentId: fld_c3e36879cb36450d86b82f744b763989
+    modified: 1712618347165
+    created: 1712607784332
+    url: http://localhost:3000/user
+    name: Create User
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Monica",
+        	"email": "moniquin@gmail.com",
+        	"image": ""
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328438
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d8ee04345b21492c9b2df4c37db11ae9
+    parentId: fld_c3e36879cb36450d86b82f744b763989
+    modified: 1712618379129
+    created: 1712420901053
+    url: http://localhost:3000/user/1
+    name: Get User
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328413
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e7b3ab79b3ba4e1caed294f1600ff6b0
+    parentId: fld_def0b96ea2764a5dabe9969ac475e671
+    modified: 1712620644958
+    created: 1712618428019
+    url: http://localhost:3000/programs?page=0&perPage5
+    name: Get List Programs
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328513
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_def0b96ea2764a5dabe9969ac475e671
+    parentId: wrk_f9afd394923746c085a62f2c01ed3479
+    modified: 1712618428018
+    created: 1712618428018
+    name: Programs
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1703873354126
+    _type: request_group
+  - _id: req_deccf104e5e9486cb4061b6e4169b16b
+    parentId: fld_def0b96ea2764a5dabe9969ac475e671
+    modified: 1712620711303
+    created: 1712618428020
+    url: http://localhost:3000/program/2
+    name: Update Program
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"title": "Program 2",
+        	"description": "image.com 2"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328463
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3bb19251e04c40e59a1ea7cb3586922b
+    parentId: fld_def0b96ea2764a5dabe9969ac475e671
+    modified: 1712620849729
+    created: 1712618428019
+    url: http://localhost:3000/program
+    name: Create Program
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"title": "Program 3",
+        	"description": "program description",
+        	"start_date": "2024-06-12",
+        	"end_date": "2024-07-12",
+        	"user_id": 1
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328438
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9abc45a3a55a4abb9d3999e796ea50e1
+    parentId: fld_def0b96ea2764a5dabe9969ac475e671
+    modified: 1712620875570
+    created: 1712618428018
+    url: http://localhost:3000/program/3
+    name: Get Program
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328413
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_34daa19b4bf845b586352f0912f89965
+    parentId: fld_def0b96ea2764a5dabe9969ac475e671
+    modified: 1712633413128
+    created: 1712623934713
+    url: http://localhost:3000/program/1/participant
+    name: User Program Participants
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"program_id": 2,
+        	"challenge_id": 2,
+        	"company_id": 2
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328313
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_58abdd32c43748a5b84be12597b14402
+    parentId: fld_7c3a2c20d6f74883913c066ddd5bfa98
+    modified: 1712622734126
+    created: 1712622682992
+    url: http://localhost:3000/challenges?page=0&perPage5
+    name: Get List Challenges
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328513
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_7c3a2c20d6f74883913c066ddd5bfa98
+    parentId: wrk_f9afd394923746c085a62f2c01ed3479
+    modified: 1712622682991
+    created: 1712622682991
+    name: Challenges
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1701687113456.5
+    _type: request_group
+  - _id: req_2ae1434d91a241d5842ed754cf7a7b87
+    parentId: fld_7c3a2c20d6f74883913c066ddd5bfa98
+    modified: 1712622751677
+    created: 1712622682992
+    url: http://localhost:3000/challenge/2
+    name: Update Challenge
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"title": "challenge 2",
+        	"description": "image.com 2"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328463
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e333fa9c95f24f80a76bd773929c674a
+    parentId: fld_7c3a2c20d6f74883913c066ddd5bfa98
+    modified: 1712622795409
+    created: 1712622682992
+    url: http://localhost:3000/challenge
+    name: Create Challenge
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"title": "Challenge 3",
+        	"description": "challenge description",
+        	"difficulty": 1,
+        	"user_id": 1
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328438
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_db219c3e2a5a4b96aff72d1ab09da646
+    parentId: fld_7c3a2c20d6f74883913c066ddd5bfa98
+    modified: 1712622816909
+    created: 1712622682991
+    url: http://localhost:3000/challenge/3
+    name: Get Challenge
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328413
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e1d6186da43247a6b003792c1de5740a
+    parentId: fld_f825f973ac13431996766595993af290
+    modified: 1712622830743
+    created: 1712620921132
+    url: http://localhost:3000/companies?page=0&perPage5
+    name: Get List Companies
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328513
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_f825f973ac13431996766595993af290
+    parentId: wrk_f9afd394923746c085a62f2c01ed3479
+    modified: 1712620921131
+    created: 1712620921131
+    name: Company
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1699500872787
+    _type: request_group
+  - _id: req_8d899f5fd6b748f580d7eda7ad4ba20a
+    parentId: fld_f825f973ac13431996766595993af290
+    modified: 1712643406512
+    created: 1712620921132
+    url: http://localhost:3000/company/2
+    name: Update Company
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"title": "Company 2",
+        	"description": "image.com 2"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328463
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_87fed68a0f8d4c6c9792fd114f7ed8cb
+    parentId: fld_f825f973ac13431996766595993af290
+    modified: 1712622845673
+    created: 1712620921132
+    url: http://localhost:3000/company
+    name: Create Company
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"title": "Company 3",
+        	"image_path": "company image_path",
+        	"location": "company location",
+        	"industry": "company industry",
+        	"user_id": 1
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328438
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1c565efb1e7944bcbd7922a1dbd71232
+    parentId: fld_f825f973ac13431996766595993af290
+    modified: 1712622852614
+    created: 1712620921131
+    url: http://localhost:3000/company/3
+    name: Get Company
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1712618328413
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_d4bce51111e5df720428dae21b6aaec49f5c1f82
+    parentId: wrk_f9afd394923746c085a62f2c01ed3479
+    modified: 1712419409184
+    created: 1712419409184
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1712419409184
+    _type: environment
+  - _id: jar_d4bce51111e5df720428dae21b6aaec49f5c1f82
+    parentId: wrk_f9afd394923746c085a62f2c01ed3479
+    modified: 1712419409185
+    created: 1712419409185
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar

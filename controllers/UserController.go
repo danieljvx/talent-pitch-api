@@ -28,6 +28,14 @@ type RequestCreateUser struct {
 	Image string `json:"image" xml:"image" form:"image"`
 }
 
+// swagger:operation GET /user/{id} User GetUserController
+// Get User by id
+//
+// ---
+// responses:
+//
+//  404: CommonError
+//  200: CommonSuccess
 func GetUserController(c *fiber.Ctx) error {
 	userIdParam := c.Params("id")
 	fmt.Printf("userIdParam: %s\n", userIdParam)
@@ -64,6 +72,14 @@ func GetUserController(c *fiber.Ctx) error {
 	})
 }
 
+// swagger:operation POST /user User SetCreateUserController
+// Create User
+//
+// ---
+// responses:
+//
+//  400: CommonError
+//  201: CommonSuccess
 func SetCreateUserController(c *fiber.Ctx) error {
 	params := new(RequestCreateUser)
 	err := c.BodyParser(params)
@@ -105,6 +121,14 @@ func SetCreateUserController(c *fiber.Ctx) error {
 	})
 }
 
+// swagger:operation PUT /user/{id} Product SetUpdateUserController
+// Update User
+//
+// ---
+// responses:
+//
+//  400: CommonError
+//  200: CommonSuccess
 func SetUpdateUserController(c *fiber.Ctx) error {
 	userIdParam := c.Params("id")
 	fmt.Printf("userIdParam: %s\n", userIdParam)
@@ -124,8 +148,8 @@ func SetUpdateUserController(c *fiber.Ctx) error {
 		fmt.Printf("params.Image: %s\n", params.Image)
 		user := services.PutUserService(userId, params.Name, params.Email, params.Image)
 		if user != nil {
-			return c.Status(http.StatusCreated).JSON(responses.Response{
-				Status:  http.StatusCreated,
+			return c.Status(http.StatusOK).JSON(responses.Response{
+				Status:  http.StatusOK,
 				Message: "user updated",
 				Data:    user,
 			})
@@ -144,6 +168,14 @@ func SetUpdateUserController(c *fiber.Ctx) error {
 	}
 }
 
+// swagger:operation GET /users [User] GetUsersController
+// Get Users list
+//
+// ---
+// responses:
+//
+//  400: CommonError
+//  200: CommonSuccess
 func GetUsersController(c *fiber.Ctx) error {
 	page := 0
 	pageParam := c.Query("page")

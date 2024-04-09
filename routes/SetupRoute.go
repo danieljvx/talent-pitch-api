@@ -8,5 +8,6 @@ func SetupRoute(app *fiber.App) {
 	ProgramRoute(app)
 	CompanyRoute(app)
 	ChallengeRoute(app)
+	GPTRoute(app)
 	SwaggerRoute(app)
 }

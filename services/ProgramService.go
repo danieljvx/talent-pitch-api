@@ -67,6 +67,48 @@ func PutProgramService(id int, title string, description string, startDate strin
 	return GetProgramService(id)
 }
 
+func GetProgramParticipantsService(programParticipantId int) *models.ProgramParticipantsModel {
+	programParticipant := models.GetProgramParticipant(programParticipantId)
+	return programParticipant
+}
+
+func PostProgramParticipantService(programId int, companyId int, challengeId int, userId uint) *models.ProgramParticipantsModel {
+	programParticipants := models.ProgramParticipantsModel{ProgramID: uint(programId), CompanyID: uint(companyId), ChallengeID: uint(challengeId), UserID: userId}
+	err := config.DB.Create(&programParticipants).Error
+
+	if err != nil {
+		log.Println(err)
+		return nil
+	}
+
+	return &programParticipants
+}
+
+func PutProgramParticipantService(id int, programId int, companyId int, challengeId int, userId uint) *models.ProgramParticipantsModel {
+	programParticipants := models.ProgramParticipantsModel{UpdatedAt: time.Now()}
+	if programId <= 0 {
+		programParticipants.ProgramID = uint(programId)
+	}
+	if companyId <= 0 {
+		programParticipants.CompanyID = uint(companyId)
+	}
+	if challengeId <= 0 {
+		programParticipants.ChallengeID = uint(challengeId)
+	}
+	if userId <= 0 {
+		programParticipants.UserID = userId
+	}
+
+	err := config.DB.Model(&models.ProgramParticipantsModel{}).Where("id = ?", id).UpdateColumns(programParticipants).Error
+
+	if err != nil {
+		log.Println(err)
+		return nil
+	}
+
+	return GetProgramParticipantsService(id)
+}
+
 func GetProgramsService(page int, perPage int, dateStart time.Time, dateEnd time.Time) *PaginationProgramsService {
 	if page == 0 {
 		page = 1
@@ -101,6 +143,7 @@ func GetProgramsService(page int, perPage int, dateStart time.Time, dateEnd time
 		paginationProgramsService.NextPage = paginationProgramsService.Page + 1
 	}
 	errPrograms := Query.Offset(offset).Limit(paginationProgramsService.PerPage).Order("id desc").Find(&paginationProgramsService.Data).Error
+
 	if errPrograms == nil {
 		return &paginationProgramsService
 	}

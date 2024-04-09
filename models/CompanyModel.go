@@ -31,13 +31,3 @@ func GetCompany(id int) *CompanyModel {
 	}
 	return nil
 }
-
-func GetCompanies() *[]CompanyModel {
-	var companies []CompanyModel
-
-	err := config.DB.Find(&companies, "email is not null").Error
-	if err == nil {
-		return &companies
-	}
-	return nil
-}

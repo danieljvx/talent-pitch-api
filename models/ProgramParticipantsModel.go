@@ -8,12 +8,14 @@ import (
 // ProgramParticipantsModel struct to describe book object.
 type ProgramParticipantsModel struct {
 	ID          uint            `db:"id" json:"id" validate:"required,uuid"`
-	ProgramID   uint            `db:"user_id" json:"user_id" validate:"required,uuid"`
-	Program     *ProgramModel   `json:"program" gorm:"foreignKey:UserID;references:ID;"`
+	ProgramID   uint            `db:"program_id" json:"program_id" validate:"required,uuid"`
+	Program     *ProgramModel   `json:"program"`
 	ChallengeID uint            `db:"challenge_id" json:"challenge_id" validate:"required,uuid"`
-	Challenge   *ChallengeModel `json:"challenge" gorm:"foreignKey:UserID;references:ID;"`
+	Challenge   *ChallengeModel `json:"challenge"`
 	CompanyID   uint            `db:"company_id" json:"company_id" validate:"required,uuid"`
-	Company     *CompanyModel   `json:"company" gorm:"foreignKey:UserID;references:ID;"`
+	Company     *CompanyModel   `json:"company"`
+	UserID      uint            `db:"user_id" json:"user_id" validate:"required,uuid"`
+	User        *UserModel      `json:"user"`
 	CreatedAt   time.Time       `db:"created_at" json:"created_at"`
 	UpdatedAt   time.Time       `db:"updated_at" json:"updated_at"`
 }
@@ -22,22 +24,12 @@ func (ProgramParticipantsModel) TableName() string {
 	return "program_participants"
 }
 
-func GetProgramParticipants(id int) *ProgramModel {
-	var program ProgramModel
+func GetProgramParticipant(id int) *ProgramParticipantsModel {
+	var programParticipant ProgramParticipantsModel
 
-	err := config.DB.Find(&program, "id = ?", id).Error
+	err := config.DB.Find(&programParticipant, "id = ?", id).Error
 	if err == nil {
-		return &program
-	}
-	return nil
-}
-
-func GetProgramsParticipants() *[]ProgramModel {
-	var programs []ProgramModel
-
-	err := config.DB.Find(&programs, "email is not null").Error
-	if err == nil {
-		return &programs
+		return &programParticipant
 	}
 	return nil
 }
