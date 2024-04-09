@@ -115,7 +115,7 @@ func SetCreateProgramController(c *fiber.Ctx) error {
 			Data:    nil,
 		})
 	}
-	fmt.Printf("params.UserID: %s\n", params.UserID)
+	fmt.Printf("params.UserID: %d\n", params.UserID)
 	if params.UserID <= 0 {
 		return c.Status(http.StatusBadRequest).JSON(responses.Response{
 			Status:  http.StatusBadRequest,
@@ -156,7 +156,7 @@ func SetUpdateProgramController(c *fiber.Ctx) error {
 		fmt.Printf("params.Description: %s\n", params.Description)
 		fmt.Printf("params.StartDate: %s\n", params.StartDate)
 		fmt.Printf("params.EndDate: %s\n", params.EndDate)
-		fmt.Printf("params.UserID: %s\n", params.UserID)
+		fmt.Printf("params.UserID: %d\n", params.UserID)
 		program := services.PutProgramService(programId, params.Title, params.Description, params.StartDate, params.EndDate, uint(params.UserID))
 		if program != nil {
 			return c.Status(http.StatusCreated).JSON(responses.Response{
@@ -189,7 +189,7 @@ func SetCreateProgramParticipantController(c *fiber.Ctx) error {
 			Data:    nil,
 		})
 	}
-	fmt.Printf("params.ProgramID: %s\n", params.ProgramID)
+	fmt.Printf("params.ProgramID: %d\n", params.ProgramID)
 	if params.ProgramID <= 0 {
 		return c.Status(http.StatusBadRequest).JSON(responses.Response{
 			Status:  http.StatusBadRequest,
@@ -197,7 +197,7 @@ func SetCreateProgramParticipantController(c *fiber.Ctx) error {
 			Data:    nil,
 		})
 	}
-	fmt.Printf("params.ChallengeID: %s\n", params.ChallengeID)
+	fmt.Printf("params.ChallengeID: %d\n", params.ChallengeID)
 	if params.ChallengeID <= 0 {
 		return c.Status(http.StatusBadRequest).JSON(responses.Response{
 			Status:  http.StatusBadRequest,
@@ -205,7 +205,7 @@ func SetCreateProgramParticipantController(c *fiber.Ctx) error {
 			Data:    nil,
 		})
 	}
-	fmt.Printf("params.CompanyID: %s\n", params.CompanyID)
+	fmt.Printf("params.CompanyID: %d\n", params.CompanyID)
 	if params.CompanyID <= 0 {
 		return c.Status(http.StatusBadRequest).JSON(responses.Response{
 			Status:  http.StatusBadRequest,
@@ -213,7 +213,7 @@ func SetCreateProgramParticipantController(c *fiber.Ctx) error {
 			Data:    nil,
 		})
 	}
-	fmt.Printf("params.UserID: %s\n", params.UserID)
+	fmt.Printf("params.UserID: %d\n", params.UserID)
 	if params.UserID <= 0 {
 		return c.Status(http.StatusBadRequest).JSON(responses.Response{
 			Status:  http.StatusBadRequest,
@@ -250,10 +250,10 @@ func SetUpdateProgramParticipantController(c *fiber.Ctx) error {
 				Data:    nil,
 			})
 		}
-		fmt.Printf("params.ProgramID: %s\n", params.ProgramID)
-		fmt.Printf("params.ChallengeID: %s\n", params.ChallengeID)
-		fmt.Printf("params.CompanyID: %s\n", params.CompanyID)
-		fmt.Printf("params.UserID: %s\n", params.UserID)
+		fmt.Printf("params.ProgramID: %d\n", params.ProgramID)
+		fmt.Printf("params.ChallengeID: %d\n", params.ChallengeID)
+		fmt.Printf("params.CompanyID: %d\n", params.CompanyID)
+		fmt.Printf("params.UserID: %d\n", params.UserID)
 		program := services.PutProgramParticipantService(programParticipantId, params.ProgramID, params.ChallengeID, params.CompanyID, uint(params.UserID))
 		if program != nil {
 			return c.Status(http.StatusOK).JSON(responses.Response{

@@ -1,21 +1,21 @@
 # talent-pitch-api @danieljvx
 
-### `Deploy talent-pitch-api:` [https://danieljvx-talent-pitch-api.herokuapp.com](https://danieljvx-talent-pitch-api.herokuapp.com)
-| Resource | Type | Path | Body |
-| ------ | ------ | ------ | ------ |
-| Swagger | GET | [https://danieljvx-talent-pitch-api.herokuapp.com/swagger/index.html](https://danieljvx-talent-pitch-api.herokuapp.com/swagger/index.html) | null |
-
-### `1 - Up conntainer:`
+### `1 - Up conntainer Database:`
 ```bash
-docker-compose up -d --build
+docker-compose up db -d --build
 ```
 
-### `2 - Generate Doc Swagger:`
+### `2 - Up conntainer Api:`
 ```bash
-docker-compose exec db bash -c "swag init -g main.go --output docs"
+docker-compose up api -d --build
 ```
 
-### `3 -Import database:`
+### `3 - Generate Doc Swagger:`
+```bash
+docker-compose exec api bash -c "swag init -g main.go --output docs"
+```
+
+### `4 - Import database:`
 ```bash
 docker-compose exec db bash -c "mariadb -uroot -p123qwe talentpitch < /tmp/talentpitch.sql"
 ```

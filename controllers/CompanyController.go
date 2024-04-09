@@ -108,7 +108,7 @@ func SetCreateCompanyController(c *fiber.Ctx) error {
 			Data:    nil,
 		})
 	}
-	fmt.Printf("params.UserID: %s\n", params.UserID)
+	fmt.Printf("params.UserID: %d\n", params.UserID)
 	if params.UserID <= 0 {
 		return c.Status(http.StatusBadRequest).JSON(responses.Response{
 			Status:  http.StatusBadRequest,
@@ -149,7 +149,7 @@ func SetUpdateCompanyController(c *fiber.Ctx) error {
 		fmt.Printf("params.ImagePath: %s\n", params.ImagePath)
 		fmt.Printf("params.Location: %s\n", params.Location)
 		fmt.Printf("params.Industry: %s\n", params.Industry)
-		fmt.Printf("params.UserID: %s\n", params.UserID)
+		fmt.Printf("params.UserID: %d\n", params.UserID)
 		company := services.PutCompanyService(companyId, params.Title, params.ImagePath, params.Location, params.Industry, uint(params.UserID))
 		if company != nil {
 			return c.Status(http.StatusOK).JSON(responses.Response{
