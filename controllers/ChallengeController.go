@@ -91,7 +91,7 @@ func SetCreateChallengeController(c *fiber.Ctx) error {
 			Data:    nil,
 		})
 	}
-	fmt.Printf("params.Difficulty: %s\n", params.Difficulty)
+	fmt.Printf("params.Difficulty: %d\n", params.Difficulty)
 	if params.Difficulty <= 0 {
 		return c.Status(http.StatusBadRequest).JSON(responses.Response{
 			Status:  http.StatusBadRequest,
@@ -99,7 +99,7 @@ func SetCreateChallengeController(c *fiber.Ctx) error {
 			Data:    nil,
 		})
 	}
-	fmt.Printf("params.UserID: %s\n", params.UserID)
+	fmt.Printf("params.UserID: %d\n", params.UserID)
 	if params.UserID <= 0 {
 		return c.Status(http.StatusBadRequest).JSON(responses.Response{
 			Status:  http.StatusBadRequest,
@@ -138,8 +138,8 @@ func SetUpdateChallengeController(c *fiber.Ctx) error {
 		}
 		fmt.Printf("params.Title: %s\n", params.Title)
 		fmt.Printf("params.Description: %s\n", params.Description)
-		fmt.Printf("params.Difficulty: %s\n", params.Difficulty)
-		fmt.Printf("params.UserID: %s\n", params.UserID)
+		fmt.Printf("params.Difficulty: %d\n", params.Difficulty)
+		fmt.Printf("params.UserID: %d\n", params.UserID)
 		challenge := services.PutChallengeService(challengeId, params.Title, params.Description, params.Difficulty, uint(params.UserID))
 		if challenge != nil {
 			return c.Status(http.StatusOK).JSON(responses.Response{
