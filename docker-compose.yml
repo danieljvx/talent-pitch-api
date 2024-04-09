@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: docker/db/Dockerfile
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123qwe
+      MYSQL_DATABASE: talentpitch
+    # sync folders. MySQL data is stored outside container so that rebuilding doesn't clear db.
+    # folder is at workspace root.
+    volumes:
+      - ./mysql/data:/var/lib/mysql:rw
+      - ./mysql/talentpitch.sql:/tmp/talentpitch.sql
+      - ./mysql/import.sh:/tmp/import.sh
+      - ./mysql:/docker-entrypoint-initdb.d
+    #  - ./mysql/talentpitch.sql:/docker-entrypoint-initdb.d/talentpitch.sql
+    user: mysql
+    networks:
+      - talentpitch
+  api:
+    build:
+      context: .
+      dockerfile: docker/api/Dockerfile
+    ports:
+      - "3000:3000" # http
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      - talentpitch
+networks:
+  talentpitch:
