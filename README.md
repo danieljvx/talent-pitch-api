@@ -1,21 +1,33 @@
 # talent-pitch-api @danieljvx
 
-### `1 - Up conntainer Database:`
+### `1 - .env: El archivo .env.example contiene las variables con valores a efectos de la prueba`
+```bash
+copy .env.example .env
+```
+### `2 - GPT_KEY .env: En la variable GPT_KEY agregar la key de ChatGPT para la integración`
+```bash
+nano .env
+GPT_KEY ""
+APP_PORT 3000
+DB_HOST db
+DB_PORT 3306
+DB_USER root
+DB_PASS 123qwe
+DB_NAME talentpitch
+```
+### `3 - Up conntainer Database:`
 ```bash
 docker-compose up db -d --build
 ```
-
-### `2 - Up conntainer Api:`
+### `4 - Up conntainer Api:`
 ```bash
 docker-compose up api -d --build
 ```
-
-### `3 - Generate Doc Swagger:`
+### `5 - Generate Doc Swagger:`
 ```bash
 docker-compose exec api bash -c "swag init -g main.go --output docs"
 ```
-
-### `4 - Import database:`
+### `6 - Import database:`
 ```bash
 docker-compose exec db bash -c "mariadb -uroot -p123qwe talentpitch < /tmp/talentpitch.sql"
 ```
